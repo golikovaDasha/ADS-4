@@ -24,7 +24,7 @@ for (int i = 0; i < len - 1; i++) {
 return count;
 }
 void sort(int* arr, int len) {
-int temp,j;
+int temp, j;
 for (int i = 1; i < len; i++) {
   j = i;
   temp = arr[i];
@@ -33,7 +33,7 @@ for (int i = 1; i < len; i++) {
     j--;
   }
   arr[j] = temp;
-  }	
+  }
 }
 int countPairs3(int* arr, int len, int value) {
 sort(arr, len);
