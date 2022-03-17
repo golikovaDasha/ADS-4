@@ -4,7 +4,7 @@ int count = 0;
 for (int i = 0; i < len - 1; i++) {
   for (int j = i + 1; j < len; j++) {
     if ((arr[i] + arr[j]) == value) {
-      count += 1;	
+    count += 1;
     }
   }
 }
@@ -41,7 +41,7 @@ sort(arr, len);
 int mid = 0, count = 0;
 int left = 0, right = 0;
 for (int i = 0; i < len; i++) {
-  left = i + 1 , right = len;	
+  left = i + 1 , right = len;
   while (left < right) {
 mid = (left + right) / 2;
   if (arr[mid] < (value - arr[i])) {
