@@ -41,7 +41,7 @@ int mid = 0, count = 0;
 int left, right;
 for (int i = 0; i < len; i++) {
   left = i + 1, right = len;
-  while (left < right ) {
+  while (left < right) {
     mid = (left + right) / 2;
     if (arr[mid] < (value - arr[i])) {
       left = mid + 1;
