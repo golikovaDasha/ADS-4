@@ -28,12 +28,10 @@ return count;
 int countPairs2(int* arr, int len, int value) {
 sort(arr, len);
 int count = 0;
-for (int i = 0; i < len - 1; i++) {
-  if (arr[i] < value) {
+for (int i = 0; i < len - 1; i++) {  
     for (int j = len - 1; j > i; j--) {
       if (arr[j] < value && ((arr[i] + arr[j]) == value)) {
         count += 1;
-      }
     }
   }
 }
