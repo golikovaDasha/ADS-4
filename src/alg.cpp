@@ -1,14 +1,16 @@
 // Copyright 2021 NNTU-CS
 void sort(int* arr, int len) {
-int temp, j;
-for (int i = 1; i < len; i++) {
+int j = 0, zamen = 0;
+for (int i = 0; i < len; i++) {
   j = i;
-  temp = arr[i];
-  while (j > 0 && temp < arr[j - 1]) {
-    arr[j] = arr[j - 1];
-    j--;
+for (int k = i; k < len; k++) {
+  if (arr[j] > arr[k]) {
+    j = k;
   }
-  arr[j] = temp;
+}
+zamen = arr[i];
+arr[i] = arr[j];
+arr[j] = zamen;
   }
 }
 int countPairs1(int* arr, int len, int value) {
@@ -37,24 +39,32 @@ for (int i = 0; i < len - 1; i++) {
 }
 return count;
 }
-
 int countPairs3(int* arr, int len, int value) {
 sort(arr, len);
-int mid = 0, count = 0;
-int left = 0, right = 0;
-for (int i = 0; i < len; i++) {
-  left = i + 1 , right = len;
-  while (left < right) {
-mid = (left + right) / 2;
-  if (arr[mid] < (value - arr[i])) {
-    left = mid + 1;
-} else {
-    right = mid;
-  }
-}
-while (arr[left] == (value - arr[i])) {
-  count+=1;
-  left+=1;
+int count = 0;
+for (int i = 0; i < (len - 1); i++) {
+  int left = i, right = len;
+  while (left < right - 1) {
+    int mid = (left + right) / 2;
+    if ((arr[i] + arr[mid]) == value) {
+      count++;
+      int j = mid + 1;
+      while ((arr[i] + arr[j]) == value && j < right) {
+        count++;
+        j++;
+      }
+      j = mid - 1;
+      while ((arr[i] + arr[j]) == value && j > left) {
+        count++;
+        j--;
+      }
+      break;
+      }
+      if ((arr[i] + arr[mid])> value) {
+        right = mid;
+      } else {
+        left = mid;
+    }       
   }
 }
 return count;
